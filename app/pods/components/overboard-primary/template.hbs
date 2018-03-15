@@ -1,0 +1,27 @@
+<svg width="420" height="420">
+        {{#each board as |row i|}}
+            {{#each row as |element j|}}
+                {{#if (eq element 2)}}
+                    <rect width=60 height=60 y={{mult i 60}} x={{mult j 60}} style="fill:rgb(255, 0, 0);stroke-width:3;stroke:rgb(212, 212, 212)" />
+                {{else if (eq element 0)}}
+                    <rect width=60 height=60 y={{mult i 60}} x={{mult j 60}} style="fill:rgb(255, 255, 255);stroke-width:3;stroke:rgb(212, 212, 212)" />
+                {{else if (eq element 1)}}
+                    <rect width=60 height=60 x={{mult j 60}} y={{mult i 60}} style="fill:rgb(0, 119, 255);stroke-width:3;stroke:rgb(212, 212, 212)"/>
+                {{/if}}
+            {{/each}}
+        {{/each}}
+</svg>
+<button onclick={{perform overboard board}}>Start Game</button>
+<button onclick={{action 'modeSelect' 1}}>Set H1 vs H2</button>
+<button onclick={{action 'modeSelect' 2}}>Set H1 vs RAND</button>
+<button onclick={{action 'modeSelect' 3}}>Set H1 vs H1</button>
+<button onclick={{action 'clearBoard' 1}}>Clear Board</button>
+
+Player 1 Max Depth: {{input value=(mut maxDepth1)}}
+Player 2 Max Depth: {{input value=(mut maxDepth2)}}
+<div>CurrentPlayer: {{currPlayer}}</div>
+<div>Board Dimensions: {{n}} * {{n}}</div>
+<div>Board State: {{board}}</div>
+Nodes Visited: {{nodesVisited}}
+
+{{yield}}

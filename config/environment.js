@@ -3,6 +3,7 @@
 module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'overboard-ai',
+    podModulePrefix: 'overboard-ai/pods',
     environment,
     rootURL: '/',
     locationType: 'auto',
@@ -44,6 +45,8 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+    ENV.locationType = 'hash';
+    ENV.rootURL = '/overboard-ai/';
     // here you can enable a production-specific feature
   }
 
