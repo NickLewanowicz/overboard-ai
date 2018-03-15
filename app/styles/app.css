@@ -1,0 +1,17 @@
+.button-column {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin-top: 80px;
+}
+.top{
+    display: flex;
+    flex-direction: row;
+}
+.option{
+    margin: 5px;
+}
+.input-flex{
+    display: flex;
+    flex-direction: column;
+}
