@@ -8,6 +8,7 @@ export default Component.extend({
     maxDepth1: 3,
     maxDepth2: 3,
     nodes: 0,
+    board: [[1,1,2,1,1,2],[2,2,1,1,1,2],[2,2,1,2,2,1],[1,2,2,1,2,2],[2,1,1,1,2,2],[2,1,1,2,1,1]],
     freshBoard: [1,1,2,1,1,2, 2,2,1,1,1,2, 2,2,1,2,2,1, 1,2,2,1,2,2, 2,1,1,1,2,2, 2,1,1,2,1,1],
     overboard: task(function * (board) {
         let currPlayer = this.get('currPlayer')
