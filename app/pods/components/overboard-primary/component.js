@@ -7,6 +7,7 @@ export default Component.extend({
     maxDepth1: 3,
     maxDepth2: 3,
     nodes: 0,
+    lastNodes: 0,
     board: [[1,1,2,1,1,2],[2,2,1,1,1,2],[2,2,1,2,2,1],[1,2,2,1,2,2],[2,1,1,1,2,2],[2,1,1,2,1,1]],
     freshBoard: [1,1,2,1,1,2, 2,2,1,1,1,2, 2,2,1,2,2,1, 1,2,2,1,2,2, 2,1,1,1,2,2, 2,1,1,2,1,1],
     overboard: task(function * (board) {
@@ -31,11 +32,12 @@ export default Component.extend({
             newMove = newMove.parent
         }
         //console.log('Nodes searched: ' + this.get('nodes'))
+        this.set('lastNodes', this.get('nodes'))
         this.set('nodes',0)
         this.set('board', newMove.board)
         this.set('currPlayer',this.get('currPlayer') == 2 ? 1:2)
         if(newMove.winner == 0){
-            yield timeout(5)
+            yield timeout(50)
             //console.log(newMove.board)
             
             this.get('overboard').perform(this.get('board'))
