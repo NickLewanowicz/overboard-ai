@@ -5,7 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'overboard-ai',
     podModulePrefix: 'overboard-ai/pods',
     environment,
-    rootURL: '/Overboard_AI/',
+    rootURL: '/Overboard-AI/',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
