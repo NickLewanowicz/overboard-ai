@@ -1,6 +1,5 @@
 import Component from '@ember/component';
 import { task, timeout } from 'ember-concurrency';
-import computed from 'ember-macro-helpers/computed'
 
 export default Component.extend({
     currPlayer: 1,
@@ -31,7 +30,7 @@ export default Component.extend({
         while (newMove.depth !== 1){
             newMove = newMove.parent
         }
-        console.log('Nodes searched: ' + this.get('nodes'))
+        //console.log('Nodes searched: ' + this.get('nodes'))
         this.set('nodes',0)
         this.set('board', newMove.board)
         this.set('currPlayer',this.get('currPlayer') == 2 ? 1:2)
@@ -41,7 +40,7 @@ export default Component.extend({
             
             this.get('overboard').perform(this.get('board'))
         }else{
-            console.log('Player ' + newMove.winner + ' wins') 
+            //console.log('Player ' + newMove.winner + ' wins') 
             yield timeout(2000)
             let a = this.get('freshBoard')
             a = [a.slice(0,6),a.slice(6,12),a.slice(12,18),a.slice(18,24),a.slice(24,30),a.slice(30,36)]
@@ -94,7 +93,6 @@ export default Component.extend({
     possibleBoardMoves(curr){
         let n = this.get('n')
         let moves = []
-        let x = []
         for(let x = 0; x < n; x++){
             for(let y = 0; y < n; y++){
                 if(curr.board[y][x] == curr.player){
@@ -102,14 +100,6 @@ export default Component.extend({
                 }
             }
         }
-        //let a = new Map()
-        // for(let i = 0; i<moves.length;i++){
-        //     if(a.has(moves[i].score)){
-        //         a.get(moves[i].score).push(moves[i])
-        //     }else{
-        //         a.set(moves[i].score, [moves[i]])
-        //     }
-        // }
         return this.shuffle(moves)
         
     },
@@ -182,7 +172,6 @@ export default Component.extend({
         let board = curr.board
         let n = this.get('n')
         let newBoard = this.dupState(board)
-        let z = false
         if(from[0] == to[0]){
             let diff = from[1] - to[1]
             let row = []
@@ -299,9 +288,7 @@ export default Component.extend({
         }
 
     },
-    randomMove(moves){
 
-    },
     heuristicMoveOne(move,player){
         let n = this.get('n')
         let me = 0
@@ -379,15 +366,9 @@ export default Component.extend({
         return array;
     },
     actions: {
-        move(i, j){
-            console.log(i,j)
-        },
         modeSelect(option){
-            console.log('Mode set to: ' + option)
+            //console.log('Mode set to: ' + option)
             this.set('mode', option)
-        },
-        maxDepth1(value){
-            console.log(value)
         },
         clearBoard(){
             this.get('overboard').cancelAll()
